@@ -66,7 +66,7 @@ const Home = () => {
                       <Card.Text>
                         
                         Company:<br/>
-                          {element.company.companyname}
+                          {element.company.name}
                           <br />
                           {element.company.catchPhrase}
                           <br/>{element.company.bs}

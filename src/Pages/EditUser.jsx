@@ -245,7 +245,7 @@ const EditUser = ({ userid }) => {
                     className="error_message"
                   />
                 </div>
-                <Button variant="success" type="submit">Update</Button>
+                <Button variant="success" type="submit" className="mt-5">Update</Button>
               </Col>
             </Form>
           </Formik>
