@@ -33,10 +33,10 @@ const Users = ({ setUserId }) => {
   return (
     //User list starts
     <section>
-      <Container className="userlist_container">
+      <Container>
         <Row className="row-cols-1 row-cols-md-3">
           <Col className="col-12 col-md-12">
-            <Table striped>
+            <Table striped className="border border-dark rounded">
               <thead>
                 <tr>
                   <th>Id</th>
