@@ -61,9 +61,9 @@ const CreateUser = () => {
   };
   return (
     <section>
-      <Container class="userlist_container">
+      <Container>
         <h1>Create a new User</h1>
-        <Row className="gx-4 gy-2 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <Row className="gx-4 gy-2 gx-lg-5 row-cols-1 userlist_container">
           <Formik
             initialValues={initialValues}
             validationSchema={validationschema}
@@ -72,7 +72,7 @@ const CreateUser = () => {
             <Form className="myform">
               <Col>
                 <div>
-                  <label>Name:</label>
+                  <label>Name :</label>
                   <Field type="text" name="name" />
                   <ErrorMessage
                     name="name"
@@ -81,7 +81,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Email:</label>
+                  <label>Email :</label>
                   <Field type="email" name="email" />
                   <ErrorMessage
                     name="email"
@@ -90,7 +90,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>UserName:</label>
+                  <label>UserName :</label>
                   <Field type="text" name="username" />
                   <ErrorMessage
                     name="username"
@@ -99,6 +99,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
+                  <h6>Address ::</h6>
                   <label>Suite:</label>
                   <Field type="text" name="address.suite" />
                   <ErrorMessage
@@ -108,7 +109,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Street:</label>
+                  <label>Street :</label>
                   <Field type="text" name="address.street" />
                   <ErrorMessage
                     name="address.street"
@@ -117,7 +118,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>City:</label>
+                  <label>City :</label>
                   <Field type="text" name="address.city" />
                   <ErrorMessage
                     name="address.city"
@@ -126,7 +127,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Zipcode:</label>
+                  <label>Zipcode :</label>
                   <Field type="text" name="address.zipcode" />
                   <ErrorMessage
                     name="address.zipcode"
@@ -134,8 +135,8 @@ const CreateUser = () => {
                     className="error_message"
                   />
                 </div>
-                <div>
-                  <label>Lat:</label>
+                <div><h6>Geo :</h6>
+                  <label>Lat :</label>
                   <Field type="text" name="address.geo.lat" />
                   <ErrorMessage
                     name="address.geo.lat"
@@ -144,7 +145,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Lng:</label>
+                  <label>Lng :</label>
                   <Field type="text" name="address.geo.lng" />
                   <ErrorMessage
                     name="address.geo.lng"
@@ -155,7 +156,7 @@ const CreateUser = () => {
               </Col>
               <Col>
                 <div>
-                  <label>Phone:</label>
+                  <label>Phone :</label>
                   <Field type="text" name="phone" />
                   <ErrorMessage
                     name="phone"
@@ -164,7 +165,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Website:</label>
+                  <label>Website :</label>
                   <Field type="text" name="website" />
                   <ErrorMessage
                     name="website"
@@ -173,7 +174,8 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Companyname:</label>
+                  <h6>Company ::</h6>
+                  <label>Name :</label>
                   <Field type="text" name="company.name" />
                   <ErrorMessage
                     name="company.name"
@@ -182,7 +184,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>CatchPhrase:</label>
+                  <label>CatchPhrase :</label>
                   <Field type="text" name="company.catchPhrase" />
                   <ErrorMessage
                     name="company.catchPhrase"
@@ -191,7 +193,7 @@ const CreateUser = () => {
                   />
                 </div>
                 <div>
-                  <label>Company-bs:</label>
+                  <label>Bs :</label>
                   <Field type="text" name="company.bs" />
                   <ErrorMessage
                     name="company.bs"
