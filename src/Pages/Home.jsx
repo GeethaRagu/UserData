@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [users, setUsers] = useState([]);  //users array to store fetch data
-  const[deletedata,setDeleteData] = useState([]);  // array to store deleted data
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchdata();
