@@ -3,8 +3,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { ErrorMessage, Formik, useFormik } from "formik";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
 import * as Yup from "yup";
+
 const EditUser = ({ userid }) => {
   const [edituser, setEditUser] = useState({
     name: "",
@@ -59,6 +59,19 @@ const EditUser = ({ userid }) => {
     fetchdata();
   }, []);
 
+  const fetchdata = async () => {
+    await axios
+      .get(
+        `https://6643a2606c6a65658707de9e.mockapi.io/api/userdata/${Number(id)}`
+      )
+      .then((res) => {
+        setEditUser(res.data);
+        //console.log("response", res.data);
+        // console.log("user", edituser);
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     formik.setValues(edituser);
     //console.log("user", edituser);
@@ -105,25 +118,14 @@ const EditUser = ({ userid }) => {
     onSubmit: handleSubmit,
   });
 
-  const fetchdata = async () => {
-    await axios
-      .get(
-        `https://6643a2606c6a65658707de9e.mockapi.io/api/userdata/${Number(id)}`
-      )
-      .then((res) => {
-        setEditUser(res.data);
-        //console.log("response", res.data);
-        // console.log("user", edituser);
-      })
-      .catch((error) => console.log(error));
-  };
+  
 
   return (
     <section>
       <Container>
         <h1>Edit User</h1>
         <Row className="gx-4 gy-2 gx-lg-5 row-cols-1 userlist_container">
-          <Formik>
+         
           <form onSubmit={formik.handleSubmit} className="myform">
             <Col>
               <div>
@@ -135,11 +137,7 @@ const EditUser = ({ userid }) => {
                   value={formik.values.name}
                   onChange={formik.handleChange}
                 />
-                <ErrorMessage
-                    name="name"
-                    component="h6"
-                    className="error_message"
-                  />
+                
               </div>
               
               <div className="error_message">{formik.errors.name}</div>
@@ -178,7 +176,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.suite}</div>
+              {formik.errors.address?.suite ? (<div className="error_message">{formik.errors.address.suite}</div>) : null}
               <div>
                 <label htmlFor="street">Street :</label>
                 <input
@@ -189,7 +187,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.street}</div>
+              {formik.errors.address?.street ? (<div className="error_message">{formik.errors.address.street}</div>) : null}
               <div>
                 <label htmlFor="city">City :</label>
                 <input
@@ -200,7 +198,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange} 
                 />
               </div>
-              <div className="error_message">{formik.errors.city}</div>
+              {formik.errors.address?.city ? (<div className="error_message">{formik.errors.address.city}</div>) : null}
               <div>
                 <label htmlFor="zipcode">Zipcode :</label>
                 <input
@@ -211,7 +209,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.zipcode}</div>
+              {formik.errors.address?.zipcode ? (<div className="error_message">{formik.errors.address.zipcode}</div>) : null}
               <div>
                 <h6>Geo:</h6>
                 <label htmlFor="lat">Latitude :</label>
@@ -223,7 +221,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.lat}</div>
+              {formik.errors.address?.geo?.lat ? (<div className="error_message">{formik.errors.address.geo.lat}</div>) : null}
               <div>
                 <label htmlFor="lng">Longitude :</label>
                 <input
@@ -234,7 +232,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.lng}</div>
+              {formik.errors.address?.geo?.lng ? (<div className="error_message">{formik.errors.address.geo.lng}</div>) : null}
             </Col>
             <Col>
               <div>
@@ -247,7 +245,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.phone}</div>
+              {formik.errors.phone ? (<div className="error_message">{formik.errors.phone}</div>) : null}
               <div>
                 <label htmlFor="website">Website :</label>
                 <input
@@ -271,7 +269,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.name}</div>
+              {formik.errors.company?.name ? (<div className="error_message">{formik.errors.company.name}</div>) : null}
               <div>
                 <label htmlFor="catchPhrase">CatchPhrase :</label>
                 <input
@@ -282,7 +280,7 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.catchPhrase}</div>
+              {formik.errors.company?.catchPhrase ? (<div className="error_message">{formik.errors.company.catchPhrase}</div>) : null}
               <div>
                 <label htmlFor="bs">Bs :</label>
                 <input
@@ -293,13 +291,13 @@ const EditUser = ({ userid }) => {
                   onChange={formik.handleChange}
                 />
               </div>
-              <div className="error_message">{formik.errors.bs}</div>
+              {formik.errors.company?.bs ? (<div className="error_message">{formik.errors.company.bs}</div>) : null}
               <Button className="btn btn-primary mt-5" type="submit">
                 Update
               </Button>
             </Col>
           </form>
-          </Formik>
+          
         </Row>
       </Container>
     </section>

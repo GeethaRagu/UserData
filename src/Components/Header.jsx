@@ -17,7 +17,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Link className="nav-link" to="/users">
-                Users
+                Manage Users
               </Link>
               <Link className="nav-link" to="/createuser">
                 Add new user
